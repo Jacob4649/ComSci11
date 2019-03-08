@@ -75,6 +75,8 @@ public class KlimczakA3Math {
 		//prints the square of int2
 		System.out.println("Integer Number 2 Raised To The Exponent 2 Is: " + (int) Math.pow(m_int2, 2) + "");
 		
+		System.out.print("\n");
+		
 		/*
 		 * Decimal Math Portion
 		 * Takes two doubles in and outputs the results of various operations performed on those inputs
@@ -93,7 +95,7 @@ public class KlimczakA3Math {
 		System.out.print("\n");
 		
 		//prints result of addition
-		System.out.println("Addition: " + m_d1 + " + " + m_d2 + " = " + m_threePlaces.format(m_int1 + m_int2) + ""); 			
+		System.out.println("Addition: " + m_d1 + " + " + m_d2 + " = " + m_threePlaces.format(m_d1 + m_d2) + ""); 			
 		//prints result of subtraction
 		System.out.println("Subtraction: " + m_d1 + " - " + m_d2 + " = " + m_threePlaces.format(m_d1 - m_d2) + "");			
 		//prints result of multiplication
@@ -103,10 +105,10 @@ public class KlimczakA3Math {
 		
 		System.out.print("\n");
 		
-		//prints square root of first double
-		System.out.println("The Square Root Of " + m_d1 + " (Three Decimal Places) = " + m_threePlaces.format(Math.sqrt(m_d1)) + "");
-		//prints square root of second double
-		System.out.println("The Square Root Of " + m_d2 + " (One Decimal Place) = " + m_onePlace.format(Math.sqrt(m_d2)) + "");
+		//prints square root of first double, can handle negative numbers too by outputting imaginary numbers
+		System.out.println("The Square Root Of " + m_d1 + " (Three Decimal Places) = " + m_threePlaces.format(Math.sqrt(Math.abs(m_d1))) + (m_d1 >= 0 ? "" : " i") + "");
+		//prints square root of second double, can handle negative numbers too by outputting imaginary numbers
+		System.out.println("The Square Root Of " + m_d2 + " (One Decimal Place) = " + m_onePlace.format(Math.sqrt(Math.abs(m_d2))) + (m_d2 >= 0 ? "" : " i") + "");
 		//prints the first double rounded
 		System.out.println("The Value " + m_d1 + " Rounded Is " + m_noPlaces.format(m_d1) + "");
 		System.out.println("The Value " + m_d2 + " Rounded Is " + m_noPlaces.format(m_d2) + "");

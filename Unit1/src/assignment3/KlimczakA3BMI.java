@@ -36,13 +36,15 @@ public class KlimczakA3BMI {
 		System.out.println("\t2 - Inches & Pounds");
 		System.out.println("\t3 - Feet & Pounds");
 		System.out.print("\n");
-		System.out.print("Input:");
+		System.out.print("Input: ");
 		while (true) {
 			m_inputMode = ScannerUtils.readInt(m_input)-1;
 			if (m_inputMode <= 2 && m_inputMode >= 0)
 				break;
 			System.out.println("Invalid Input");
 		}
+		
+		System.out.print("\n");
 		
 		switch (m_inputMode) {
 		
@@ -59,9 +61,9 @@ public class KlimczakA3BMI {
 			System.out.print("\n");
 			
 			//prints height
-			System.out.println("Your height in meters: " + m_height + "");
+			System.out.println("Your height in meters: " + m_fivePlaces.format(m_height) + "");
 			//prints weight
-			System.out.println("Your weight in kilograms: " + m_weight + "");
+			System.out.println("Your weight in kilograms: " + m_fivePlaces.format(m_weight) + "");
 			
 			break;
 			
@@ -78,9 +80,9 @@ public class KlimczakA3BMI {
 			System.out.print("\n");
 			
 			//prints height
-			System.out.println("Your height in inches: " + (m_height * 100) / 2.54 + "");
+			System.out.println("Your height in inches: " + m_fivePlaces.format((m_height * 100) / 2.54) + "");
 			//prints weight
-			System.out.println("Your weight in pounds: " + m_weight * 2.205 + "");
+			System.out.println("Your weight in pounds: " + m_fivePlaces.format(m_weight * 2.205) + "");
 			
 			break;
 			
@@ -92,7 +94,12 @@ public class KlimczakA3BMI {
 			m_height = (m_feet * 12 * 2.54) / 100; //converts to metres
 			
 			System.out.print("What is your height (inches only)? ");
-			m_inches = ScannerUtils.readDouble(m_input);
+			while (true) {
+				m_inches = ScannerUtils.readInt(m_input);
+				if (m_inches <= 12 && m_inches >= -12)
+					break;
+				System.out.println("Invalid Input");
+			}
 			m_height += (m_inches * 2.54) / 100; //converts to metres
 			
 			//gets weight in Kg
@@ -102,10 +109,10 @@ public class KlimczakA3BMI {
 			System.out.print("\n");
 			
 			//prints height
-			System.out.println("Your height in feet only: " + m_feet + "");
-			System.out.println("Your height in inches only: " + m_inches + "");
+			System.out.println("Your height in feet only: " + m_fivePlaces.format(m_feet) + "");
+			System.out.println("Your height in inches only: " + m_fivePlaces.format(m_inches) + "");
 			//prints weight
-			System.out.println("Your weight in pounds: " + m_weight * 2.205 + "");
+			System.out.println("Your weight in pounds: " + m_fivePlaces.format(m_weight * 2.205) + "");
 			
 			break;
 			
