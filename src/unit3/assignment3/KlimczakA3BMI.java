@@ -4,12 +4,19 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 import unit3.assignment3.ScannerUtils;
 
+/*	Jacob Klimczak
+ * 	March, 6, 2019
+ * 	ICS3U0
+ * 	Assignment 3, Math Question
+ */
+
 /**
  * Takes height and weight, and outputs body mass index
  * @author Jacob
  *
  */
 public class KlimczakA3BMI {
+
 
 	static Scanner m_input = new Scanner(System.in);
 	
