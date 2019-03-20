@@ -1,7 +1,7 @@
 package unit3.excercises1;
 
 import java.util.Scanner;
-import excercises1.ScannerUtils;
+import unit3.excercises1.ScannerUtils;
 
 public class KlimczakE1Q4 {
 

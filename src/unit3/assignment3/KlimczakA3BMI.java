@@ -2,7 +2,7 @@ package unit3.assignment3;
 
 import java.text.DecimalFormat;
 import java.util.Scanner;
-import assignment3.ScannerUtils;
+import unit3.assignment3.ScannerUtils;
 
 /**
  * Takes height and weight, and outputs body mass index
