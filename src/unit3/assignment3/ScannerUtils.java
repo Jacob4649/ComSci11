@@ -1,10 +1,11 @@
-package excercises1;
+package unit3.assignment3;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * Collection of convenient scanner methods that read values then clear the scanner buffer
+ * Collection of convenient scanner methods that read values then clear the scanner buffer.
+ * They also handle inputmismatch exceptions.
  * @author Jacob
  *
  */

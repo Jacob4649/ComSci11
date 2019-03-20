@@ -1,4 +1,4 @@
-package assignment1;
+package unit3.assignment1;
 
 public class KlimczakA1Q3 {
 	

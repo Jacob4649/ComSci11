@@ -1,4 +1,4 @@
-package assignment2;
+package unit3.assignment2;
 
 //	Jacob Klimczak
 //	Sports Assignment
