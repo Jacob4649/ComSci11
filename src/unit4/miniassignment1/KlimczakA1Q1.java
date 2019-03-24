@@ -59,7 +59,7 @@ public class KlimczakA1Q1 {
 			if (m_distance > 11) {
 				m_delivery = false;
 				m_distance = 0;
-				System.out.println("We do not deliver to locations further than 11km");
+				System.out.println("Sorry, we do not deliver to locations further than 11km");
 			}
 		}
 		
