@@ -74,7 +74,7 @@ public class KlimczakA1Q1 {
 		//output invoice
 		System.out.println("Invoice:\n\t" + m_item + "\t$" + m_twoPlaces.format(m_price) + "\n" + (m_delivery ? ("\tshipping\t$" + m_twoPlaces.format(m_shipping) + "\n" ) : "") + "\ttaxes\t\t$" + m_twoPlaces.format(m_taxes) + "\n\ttotal\t\t$" + m_twoPlaces.format(m_price + m_shipping + m_taxes));
 		System.out.print("\n");
-		System.out.println("Your order will be delivered in 30 minutes. Thank you for shopping at the Carnegie Deli!");
+		System.out.println("Your order will be " + (m_delivery ? "delivered" : "ready for pickup") + " in 30 minutes. Thank you for shopping at the Carnegie Deli!");
 	}
 
 }
