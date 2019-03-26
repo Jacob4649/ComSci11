@@ -45,7 +45,7 @@ public class KlimczakA1Q2 {
 	static double getPressure(String label) {
 		System.out.print("Input " + label + " pressure (in psi): ");
 		double input = ScannerUtils.readDouble(m_input);
-		if (!(input > 31 && input < 49)) {
+		if (!(input >= 32 && input <= 48)) {
 			m_badInflation = true;
 			System.out.println("Warning: pressure is out of range");	
 		}

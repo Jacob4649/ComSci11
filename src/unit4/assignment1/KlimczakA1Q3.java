@@ -37,17 +37,15 @@ public class KlimczakA1Q3 {
 		//gets back left
 		m_backLeft = getPressure("back left");
 		
-		//TODO : RangeCheck - check that front and back tires are within 10 of each other
-		
 		//outputs whether pressure is ok
-		System.out.println("Inflation is " + (m_badInflation ? "BAD" : ((Math.abs(m_backLeft - m_backRight) <= 3.5 && Math.abs(m_frontLeft - m_frontRight) <= 3.5) ? "OK" : "not OK")));
+		System.out.println("Inflation is " + (m_badInflation ? "BAD" : ((Math.abs(m_backLeft - m_backRight) <= 3.5 && Math.abs(m_frontLeft - m_frontRight) <= 3.5 && Math.abs(((m_frontLeft + m_frontRight)/2 < (m_backLeft + m_backRight)/2 ? Math.min(m_frontLeft, m_frontRight) : Math.max(m_frontLeft, m_frontRight)) - ((m_backLeft + m_backRight)/2 < (m_frontLeft + m_frontRight)/2 ? Math.min(m_backLeft, m_backRight) : Math.max(m_backLeft, m_backRight))) <= 10) ? "OK" : "not OK")));
 		
 	}
 	
 	static double getPressure(String label) {
 		System.out.print("Input " + label + " pressure (in psi): ");
 		double input = ScannerUtils.readDouble(m_input);
-		if (!(input > 31 && input < 49)) {
+		if (!(input >= 32 && input <= 48)) {
 			m_badInflation = true;
 			System.out.println("Warning: pressure is out of range");	
 		}
