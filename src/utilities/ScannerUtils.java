@@ -84,4 +84,13 @@ public class ScannerUtils {
 		}
 		return s;
 	}
+	
+	/**
+	 * Returns result of a yes or no query
+	 * @param input the scanner to read from
+	 * @return true if the input is Y, y, yes, Yes, or anything starting with a Y. returns false for anything else
+	 */
+	public static boolean yesQuery(Scanner input) {
+		return (readWord(input).matches("^(y|Y).*$"));	
+	}
 }
