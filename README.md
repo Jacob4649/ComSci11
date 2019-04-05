@@ -1,6 +1,7 @@
 # ComSci11
 Repository Filled With Code From My Grade 11 Computer Science Class
 
-_Projects Contained_
+_Packages Contained_
 
-**Unit 1** - Basics Of Java
+**Unit 3** - Basics Of Java
+**Unit 4** - Selection
