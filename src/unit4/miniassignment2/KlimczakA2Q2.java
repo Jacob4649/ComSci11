@@ -156,7 +156,7 @@ public class KlimczakA2Q2 {
 				
 				//check here against everything in the problematic index
 				for (int i = 0; i < question.getProblematicIndex().length; i++) {
-					if (question.getAnswers()[question.getProblematicIndex()[i]].matches("(?i)^" + input + "$")) { //checks if it matches exactly
+					if (question.getAnswers()[question.getProblematicIndex()[i]].matches("(?i)^" + input + "$")) { //checks if it matches exactly with anchors, case insensitive
 						compatibleAnswer = true;
 						answerIndex = question.getProblematicIndex()[i];
 					}
