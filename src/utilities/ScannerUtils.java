@@ -33,6 +33,34 @@ public class ScannerUtils {
 	 * Reads input from a scanner, then clears buffer
 	 * Prints "Invalid Input" on InputMismatchException
 	 * @param input the scanner to read from
+	 * @param min the minimum value to read without throwing an exception (inclusive)
+	 * @param max the maximum value to read without throwing an exception (inclusive)
+	 * @return the value read
+	 * @throws an InputMisMatchException if the input is not within the desired range (inclusive)
+	 */
+	public static int readIntRange(Scanner input, int min, int max) throws InputMismatchException {
+		int i = 0;
+		try {
+			i = input.nextInt();
+			input.nextLine();
+		} catch (InputMismatchException e) {
+			System.out.println("Invalid Input");
+			input.nextLine();
+			i = readInt(input);
+		}
+		
+		if (i >= min && i <= max) {
+			return i;
+		} else {
+			throw new InputMismatchException();
+		}
+		
+	}
+	
+	/**
+	 * Reads input from a scanner, then clears buffer
+	 * Prints "Invalid Input" on InputMismatchException
+	 * @param input the scanner to read from
 	 * @return the value read
 	 */
 	public static double readDouble(Scanner input) {
