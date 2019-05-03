@@ -18,10 +18,10 @@ import java.util.Arrays;
  */
 public class KlimczakA2Q4 {
 	
-	static int[] m_password = {0, 0, 0, 0, 0, 0};
-	static String m_guessString = "";
-	static int[] m_guess = {0, 0, 0, 0, 0, 0};
-	static int m_count = 0;
+	static int[] m_password = {0, 0, 0, 0, 0, 0}; //array containing password
+	static String m_guessString = ""; //string user guess
+	static int[] m_guess = {0, 0, 0, 0, 0, 0}; //array containing user guess
+	static int m_count = 0; //number of guesses user has made
 	
 	static Scanner m_input = new Scanner(System.in);
 	static Random m_rand = new Random();
