@@ -19,6 +19,9 @@ import utilities.ScannerUtils;
  */
 public class KlimczakBlackjack {
 	
+	//TODO : Rules
+	//TODO : Shuffling and replenishing deck on zero
+	
 	public static final int DEALER_HIT_CAP = 17; //the dealer will not hit past this value
 	public static final int PLAYER_STARTING_CASH = 100;
 	public static final int MINIMUM_BET = 10;
