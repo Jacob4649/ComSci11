@@ -21,6 +21,7 @@ public class KlimczakBlackjack {
 	
 	public static final int DEALER_HIT_CAP = 17; //the dealer will not hit past this value
 	public static final int PLAYER_STARTING_CASH = 100;
+	public static final int MINIMUM_BET = 10;
 	
 	static Scanner m_input = new Scanner(System.in);
 	
@@ -272,12 +273,12 @@ public class KlimczakBlackjack {
 	 */
 	public static int setWager() {
 		System.out.println("You currently have $" + m_playerCash);
-		System.out.print("Please place your bet (10 - " + m_playerCash + "): ");
+		System.out.print("Please place your bet (" + MINIMUM_BET + " - " + m_playerCash + "): ");
 		
 		int wager = 0;
 		
 		try {
-			wager = ScannerUtils.readIntRange(m_input, 10, m_playerCash);
+			wager = ScannerUtils.readIntRange(m_input, MINIMUM_BET, m_playerCash);
 		} catch (Exception e) {
 			System.out.println();
 			System.out.println("That betting amount is not within acceptable ranges.");
