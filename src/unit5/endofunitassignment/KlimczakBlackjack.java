@@ -636,7 +636,7 @@ public class KlimczakBlackjack {
 		
 		@Override
 		public String toString() {
-			return m_type.toString() + " of " + m_suit.toString();
+			return m_type + " of " + m_suit;
 		}
 		
 		public int getValue() {
