@@ -338,7 +338,6 @@ public class KlimczakBlackjack {
 		m_dealerHand = new Hand();
 		
 		if (m_handNumber % 20 == 0) { //if a multiple of 20 hands has been played
-			System.out.println("The dealer reshuffles the decks");
 			m_deck = new Deck(6);
 			m_handNumber = 0; //resets handNumber, technically good practice to avoid int limit
 		}
