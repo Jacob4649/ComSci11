@@ -20,7 +20,6 @@ import utilities.ScannerUtils;
 public class KlimczakBlackjack {
 	
 	//TODO : Rules
-	//TODO : Shuffling and replenishing deck on zero
 	
 	public static final int DEALER_HIT_CAP = 17; //the dealer will not hit past this value
 	public static final int PLAYER_STARTING_CASH = 100;
@@ -34,13 +33,13 @@ public class KlimczakBlackjack {
 	
 	static boolean m_endGame, m_endPlayer, m_dealBustShown, m_playerBustShown = false;
 	static int m_playerCash = PLAYER_STARTING_CASH;
+	static int m_handNumber = 0;
 	
 	public static void main(String[] args) {
 		while (true) {
 			newGame();
 
 			checkHands();
-			
 			
 			while (!m_endGame) {
 				while (!m_endPlayer) {
@@ -268,6 +267,19 @@ public class KlimczakBlackjack {
 			System.out.println("You now have $" + m_playerCash);
 			continuePrompt();
 		}
+		
+		//trashes cards from both hands
+		for (Card card : m_dealerHand.getCards()) { //trashes dealer cards
+			m_deck.trash(card);
+		}
+		
+		for (Hand hand : m_playerHands) { //iterates through all player hands
+			for (Card card : hand.getCards()) { //iterates through all cards in hand
+				m_deck.trash(card);
+			}
+		}
+		
+		m_handNumber++; //iterates hand number
 	}
 	
 	/**
@@ -324,7 +336,12 @@ public class KlimczakBlackjack {
 			}
 		};
 		m_dealerHand = new Hand();
-		m_deck = new Deck();
+		
+		if (m_handNumber % 20 == 0) { //if a multiple of 20 hands has been played
+			System.out.println("The dealer reshuffles the decks");
+			m_deck = new Deck(6);
+			m_handNumber = 0; //resets handNumber, technically good practice to avoid int limit
+		}
 		
 		setWager();
 		
@@ -548,9 +565,9 @@ public class KlimczakBlackjack {
 		public static final int ACE_HIGH_VALUE = 11;
 		public static final int ACE_LOW_VALUE = 1;
 		
-		Suit m_suit;
-		Type m_type;
-		int m_value;
+		private Suit m_suit;
+		private Type m_type;
+		private int m_value;
 		
 		/**
 		 * Initializes a card with a suit and a type (i.e. Ace of Spades)
@@ -678,9 +695,9 @@ public class KlimczakBlackjack {
 		
 		public static final int MAX_HAND_VALUE = 21; //max value for a hand
 		
-		ArrayList<Card> m_cards = new ArrayList<Card>();
-		int m_wager = 0;
-		boolean m_stand = false;
+		private ArrayList<Card> m_cards = new ArrayList<Card>();
+		private int m_wager = 0;
+		private boolean m_stand = false;
 		
 		/**
 		 * Constructor for Hand class, initializes with a list of cards
@@ -793,24 +810,38 @@ public class KlimczakBlackjack {
 	 */
 	static class Deck {
 		
-		ArrayList<Card> m_deck = new ArrayList<Card>();
+		private ArrayList<Card> m_deck;
+		private ArrayList<Card> m_trash;
 		
 		/**
-		 * Creates a new deck containing all 52 cards
+		 * Creates a new stack (collection of decks) containing a specified number of decks
+		 * @param stackNumber the number of decks you want in the stack
 		 */
-		public Deck() {
-			for (Suit suit : Suit.values()) { //iterates through all suits
-				for (Type type : Type.values()) { //iterates through all types
-					addCard(new Card(suit, type)); //adds one card of every suit and type
+		public Deck(int stackNumber) {
+			m_deck = new ArrayList<Card>(); //empties arraylists
+			m_trash = new ArrayList<Card>();//empties arraylists
+			for (int i = 0; i < stackNumber; i++) { //adds the specified number of decks to the stack
+				for (Suit suit : Suit.values()) { //iterates through all suits
+					for (Type type : Type.values()) { //iterates through all types
+						addCard(new Card(suit, type)); //adds one card of every suit and type
+					}
 				}
 			}
 			
-			this.shuffle(); //shuffles the deck
+			this.shuffle(); //shuffles the deck/stack
 		}
 		
 		/**
-		 * Adds a card to the end of the deck
-		 * @param card adds a card to the deck
+		 * Creates a single deck stack with 52 cards
+		 */
+		public Deck() {
+			this(1);
+		}
+		
+		
+		/**
+		 * Adds a card to the end of the deck/stack
+		 * @param card adds a card to the deck/stack
 		 */
 		public void addCard(Card card) {
 			m_deck.add(card);
@@ -851,7 +882,7 @@ public class KlimczakBlackjack {
 		}
 		
 		/**
-		 * Draws the last card from the deck
+		 * Draws the last card from the deck, if out of cards refills from trash
 		 * @return the card that was drawn
 		 */
 		public Card drawCard() {
@@ -861,11 +892,37 @@ public class KlimczakBlackjack {
 			try {
 				card = m_deck.get(m_deck.size()-1);
 				m_deck.remove(card);
-			} catch (Exception e) {
-				card = null;
+			} catch (Exception e) { //if out of cards
+				replenishDeck(); //refill from trash
+				card =  drawCard(); //draw a new card
 			}
 
 			return card;
+		}
+		
+		/**
+		 * Adds a card to the trash, cards in the trash are used when the deck needs to be replenished
+		 * @param card the card to add to the trash
+		 */
+		public void trash(Card card) {
+			m_trash.add(card);
+		}
+		
+		/**
+		 * Replenishes the deck with cards from the trash
+		 * @throws IndexOutOfBoundsException if the trash is empty
+		 */
+		public void replenishDeck() throws IndexOutOfBoundsException {
+			if (m_trash.size() > 0) { //if the trash isn't empty (necessary to avoid infinite loops with drawcard calling itself recursively)
+				for (Card card : m_trash) { //adds cards to deck
+					m_deck.add(card);
+				}
+				m_trash.removeAll(m_trash); //empties trash		
+				shuffle(); //re shuffles	
+			} else {
+				throw new IndexOutOfBoundsException(); //throws exception
+			}
+			
 		}
 		
 	}
