@@ -69,8 +69,24 @@ public class KlimczakBlackjack {
 	 */
 	public static void printRules() {
 		System.out.println("Rules:");
-		System.out.println("- Work In Progress");
+		System.out.println("The player faces off agaist the dealer in a game of blackjack.");
+		System.out.println("The goal of this game is to approach but not exceed a total value of 21 for your hand.");
+		System.out.println("The player can increase the value of his hand by drawing more cards from the deck, this is called hitting.");
+		System.out.println("The player hits until he exceeds a value of 21, in an event caled a bust which causes them to lose the game, or until they feel that their hand is big enough to win.");
+		System.out.println("At the end of the game if the player has a higher value hand than the dealer, then the player wins, otherwise, the dealer wins.");
+		System.out.println("Each card is worth its number, face cards are worth 10, and aces are worth 11, until a player exceeds a value of 21.");
+		System.out.println("When a player exceeds a value of 21, the minimum number of aces are converted to cards valued at 1 point to ensure that the player does not bust.");
+		System.out.println("The dealer will only begin to play after the player has decided to stand, or has bust.");
+		System.out.println("If the payer has not bust, then the dealer will hit until the dealer's hand meets or exceeds a value of 17.");
+		System.out.println("The dealer will also hit on \"soft 17s\", cases where the dealer's hand is valued at a 17, but consist of a 6 and an ace.");
+		System.out.println("There are certain other moves available to the player.");
+		System.out.println("The player can at any time \"double down\", this involves doubling the player's bet, and hitting one final time, before immediately standing.");
+		System.out.println("The player also occasionally has the option of \"splitting\", the player can split when he has two cards of identical type (i.e. 2 jacks, 2 twos).");
+		System.out.println("The player may only have two cards in his hand when he splits.");
+		System.out.println("Splitting splits your hand into two identical hands, each with half of the cards from your initial hand, it also splits your bet in half between the two hands.");
+		System.out.println("If the player finds themself in a suitable situation, they may even resplit a previously split hand, creating 3, 4, or potentially more hands.");
 		System.out.println();
+
 	}
 	
 	/**
