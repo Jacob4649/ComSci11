@@ -31,12 +31,14 @@ public class KlimczakBlackjack {
 	static Hand m_dealerHand;
 	static Deck m_deck;
 	
-	static boolean m_endGame, m_endPlayer, m_dealBustShown, m_playerBustShown = false;
+	static boolean m_endGame, m_endPlayer, m_quit, m_dealBustShown, m_playerBustShown = false;
 	static int m_playerCash = PLAYER_STARTING_CASH;
 	static int m_handNumber = 0;
 	
 	public static void main(String[] args) {
-		while (true) {
+		printRules();
+		
+		while (!m_quit) {
 			newGame();
 
 			checkHands();
@@ -52,12 +54,51 @@ public class KlimczakBlackjack {
 			
 			checkWinners();
 
-		}		
+			checkMoney();
+		}	
+		
+		System.out.println("Program Terminated");
 	}
 	
 	/*--------------------------------------------------*/
 	/*--------------------METHODS-----------------------*/
 	/*--------------------------------------------------*/
+	
+	/**
+	 * Prints the game rules to the console
+	 */
+	public static void printRules() {
+		System.out.println("Rules:");
+		System.out.println("- Work In Progress");
+		System.out.println();
+	}
+	
+	/**
+	 * Checks if the player is still eligible, and still willing to play more games
+	 */
+	public static void checkMoney() {
+		if (m_playerCash < MINIMUM_BET) { //if the player cannot afford the minimum bet
+			System.out.println("You can no longer affor the minimum bet, and are promptly kicked out of the casino!");
+			System.out.println();
+			System.out.println("GAME OVER");
+			System.out.println();
+			m_quit = true; //exits program loop
+		} else {
+			System.out.println("You currently have $" + m_playerCash);
+			System.out.println("Would you like to play another game (y/n)?");
+			if (ScannerUtils.yesQuery(m_input)) { //another game
+				System.out.println();
+				System.out.println("You decide to play another round.");
+				System.out.println("You slowly approach another table.");
+				continuePrompt();
+			} else { //cash in
+				System.out.println();
+				System.out.println("You leave the casino with $" + m_playerCash);
+				continuePrompt();
+				m_quit = true;
+			}
+		}
+	}
 	
 	/**
 	 * The dealer's turn
