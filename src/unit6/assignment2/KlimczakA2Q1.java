@@ -23,7 +23,7 @@ public class KlimczakA2Q1 {
 	static String m_word;
 	
 	public static void main(String[] args) {
-		System.out.println("Character Counter");
+		System.out.println("Character Counter (enter \"stop\" at any time to exit)");
 		System.out.println();
 		
 		while (true) {
