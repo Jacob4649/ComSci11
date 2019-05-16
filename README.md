@@ -10,3 +10,5 @@ _Packages Contained_
 **Unit 5** - Looping
 
 **Unit 6** - Strings
+
+**Utilities** - Misc Methods
