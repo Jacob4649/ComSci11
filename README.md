@@ -11,4 +11,4 @@ _Packages Contained_
 
 **Unit 6** - Strings
 
-**Utilities** - Misc Methods
+**Utilities** - Misc Classes
