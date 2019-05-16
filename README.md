@@ -8,3 +8,5 @@ _Packages Contained_
 **Unit 4** - Selection
 
 **Unit 5** - Looping
+
+**Unit 6** - Strings
