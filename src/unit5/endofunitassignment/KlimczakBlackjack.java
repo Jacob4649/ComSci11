@@ -91,7 +91,7 @@ public class KlimczakBlackjack {
 	 */
 	public static void checkMoney() {
 		if (m_playerCash < MINIMUM_BET) { //if the player cannot afford the minimum bet
-			System.out.println("You can no longer affor the minimum bet, and are promptly kicked out of the casino!");
+			System.out.println("You can no longer afford the minimum bet, and are promptly kicked out of the casino!");
 			System.out.println();
 			System.out.println("GAME OVER");
 			System.out.println();
